@@ -1,0 +1,25 @@
+server:
+  port: 9097
+  
+spring:
+  application.name: resilience4j-demo
+
+management:
+  endpoints.web.exposure.include:
+    - '*'
+  endpoint.health.show-details: always
+  health.circuitbreakers.enabled: true
+      
+      
+resilience4j:
+  retry:
+    instances:
+      gill:
+        max-attempts: 5
+        wait-duration: 5s
+      
+  bulkhead:
+    instances:
+      suyadpreet:
+        max-wait-duration: 5000
+        max-concurrent-calls: 5
